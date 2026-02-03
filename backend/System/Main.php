@@ -1,9 +1,9 @@
 <?php
 
 
-namespace Core\System;
-
-use Core\Security\Logger;
+namespace Backend\System;
+use Backend\System\Message;
+use Backend\Security\Logger;
 use MysqliDb;
 use Exception;
 
@@ -27,12 +27,7 @@ class Main extends MysqliDb
      */
     protected Config $Config;
 
-    /**
-     * Messages class
-     *
-     * @var Messages
-     */
-    protected Messages $Messages;
+
 
     /**
      * Logger class
@@ -49,10 +44,6 @@ class Main extends MysqliDb
     {
         // Initialize Config instance
         $this->Config = new Config();
-
-        // Initialize Messages instance
-        $this->Messages = new Messages();
-
         // Initialize Logger instance
         $this->Logger = new Logger();
 
