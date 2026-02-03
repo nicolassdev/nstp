@@ -1,0 +1,1 @@
+#install type composer require thingengineer/mysqli-database-class
