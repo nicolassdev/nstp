@@ -8,6 +8,11 @@ switch ($page) {
 
     case 'login':
         require 'frontend/pages/Login/login.php';
+        // require 'frontend/pages/Register/register.php';
+        break;
+
+    case 'register':
+        require 'frontend/pages/Register/register.php';
         break;
 
     case 'dashboard':

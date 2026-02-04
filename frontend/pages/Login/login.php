@@ -27,7 +27,7 @@ require_once __DIR__ . '/../../components/header.php';
         </form>
 
         <p class="help-text">
-            Having trouble? Contact NSTP Office
+            Having trouble? Contact NSTP Office <a href="index.php?page=register">Register</a>
         </p>
     </div>
 </div>
