@@ -1,5 +1,6 @@
 <?php
 // session_start();
+define('BASE_URL', '/nstp');
 
 $page = $_GET['page'] ?? 'login'; // default page
 
