@@ -6,7 +6,7 @@ $page = $_GET['page'] ?? 'login'; // default page
 switch ($page) {
 
     case 'login':
-        require 'frontend/Login/login.php';
+        require 'frontend/pages/Login/login.php';
         break;
 
     case 'dashboard':
