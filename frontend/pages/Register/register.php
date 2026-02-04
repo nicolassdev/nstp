@@ -36,8 +36,8 @@ require_once __DIR__ . '/../../components/header.php';
       <label for="sex">Gender</label>
       <select id="sex" name="sex" required>
         <option value="" disabled selected>Select gender</option>
-        <option value="0">Male</option>
-        <option value="1">Female</option>
+        <option value="1">Male</option>
+        <option value="0">Female</option>
       </select>
 
 

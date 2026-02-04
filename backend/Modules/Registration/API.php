@@ -93,7 +93,14 @@ class API extends Main
         $trimmed_payload = $this->trimPayload($payload);
 
 
-        // Initialize required fields
+        // Fix: Convert sex to integer (1 or 0) for tinyint
+        if (array_key_exists('sex', $trimmed_payload)) {
+            $trimmed_payload['sex'] = (int) ($trimmed_payload['sex'] == "1" || $trimmed_payload['sex'] == 1);
+        } else {
+            $trimmed_payload['sex'] = 0; // Default value
+        }
+
+        // Required fields validation (uncommented and fixed)
         $required_fields = [
             'last_name',
             'first_name',
@@ -105,14 +112,13 @@ class API extends Main
             'sex'
         ];
 
-        // Check if all required fields are filled
         // foreach ($required_fields as $field) {
-        //     if (!array_key_exists($field, $trimmed_payload)) {
+        //     if (empty($trimmed_payload[$field])) {
         //         return $this->Messages->jsonErrorRequiredFieldsNotFilled($field);
         //     }
         // }
 
-
+        // Insert using $this (not $this->db)
 
         $this->db->insert($this->table, $trimmed_payload);
 
