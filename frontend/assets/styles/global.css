@@ -167,3 +167,33 @@ p.help-text a {
 p.help-text a:hover {
   text-decoration: underline;
 }
+
+
+
+
+
+
+
+
+
+label {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #4CAF50;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #4CAF50;
+}
+
+

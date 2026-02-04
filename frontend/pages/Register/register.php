@@ -30,6 +30,12 @@ require_once __DIR__ . '/../../components/header.php';
         <label for="age">Age</label>
         <input type="age" id="age" name="age" placeholder="Confirm your age" required>
 
+        <label for="gender">Gender</label>
+            <select id="gender" name="gender" required>
+            <option value="" disabled selected>Select gender</option>
+            <option value="0">Male</option>
+            <option value="1">Female</option>
+        </select>
 
 
         <button type="submit">Register</button>
