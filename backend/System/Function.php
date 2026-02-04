@@ -1,5 +1,5 @@
 <?php
-
+use System\Messages;
 
 class myDataBase
 {
@@ -7,7 +7,7 @@ class myDataBase
     private $username;         // root
     private $password;         // null
     private $database;         // lms_db
-    public $con;
+    private $con;
 
 
 
