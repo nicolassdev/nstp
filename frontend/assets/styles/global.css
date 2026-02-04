@@ -5,16 +5,15 @@
 
 body {
   background: linear-gradient(135deg, #2e7d32, #66bb6a);
-  height: 100vh;
   margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  min-height: 100vh;
+}
+.login-container {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.login-container {
-  width: 100%;
-  max-width: 380px;
   padding: 20px;
 }
 
@@ -23,6 +22,8 @@ body {
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 380px;
 }
 
 .login-card h1 {
@@ -89,7 +90,6 @@ input:focus {
   color: #555;
 }
 
-
 /* REGISTRATION FORM  */
 
 /* Container for the form */
@@ -101,16 +101,66 @@ input:focus {
   width: 100%;
 }
 
-/* Form styling */
+/* REGISTRATION FORM */
+
 .form-container {
-  background-color: white;
+  background-color: #fff;
   padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
 }
 
+.form-container h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.form-container label {
+  font-size: 14px;
+  color: #333;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.form-container input,
+.form-container select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.form-container input:focus,
+.form-container select:focus {
+  outline: none;
+  border-color: #2e7d32;
+}
+
+.form-container button {
+  width: 100%;
+  padding: 12px;
+  background: #2e7d32;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form-container button:hover {
+  background: #256428;
+}
+
+.form-container .help-text {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 13px;
+}
 h1 {
   text-align: center;
   color: #333;
@@ -152,7 +202,6 @@ button:hover {
   background-color: #256428;
 }
 
-
 p.help-text {
   text-align: center;
   margin-top: 15px;
@@ -160,21 +209,26 @@ p.help-text {
 }
 
 p.help-text a {
-  color: #4CAF50;
+  color: #4caf50;
   text-decoration: none;
 }
 
 p.help-text a:hover {
   text-decoration: underline;
 }
-
-
-
-
-
-
-
-
+.register-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 15px;
+  overflow-y: auto;
+}
+@media (max-height: 700px) {
+  .register-container {
+    align-items: flex-start;
+  }
+}
 
 label {
   font-size: 14px;
@@ -182,18 +236,18 @@ label {
   color: #333;
 }
 
-input, select {
+input,
+select {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
-  border: 1px solid #4CAF50;
+  border: 1px solid #4caf50;
   border-radius: 5px;
   font-size: 14px;
 }
 
-input:focus, select:focus {
+input:focus,
+select:focus {
   outline: none;
-  border-color: #4CAF50;
+  border-color: #4caf50;
 }
-
-

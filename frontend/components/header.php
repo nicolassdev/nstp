@@ -6,6 +6,7 @@ if (!defined('BASE_URL')) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title><?= $pageTitle ?? 'NSTP System' ?></title>
@@ -15,4 +16,20 @@ if (!defined('BASE_URL')) {
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
+
+
+    <?php if (!empty($_SESSION['user_logged_in'])): ?>
+        <header class="main-header">
+            <div class="logo">NSTP Portal</div>
+            <nav class="nav-links">
+                <a href="<?= BASE_URL ?>/frontend/Dashboard/dashboard.php">Dashboard</a>
+                <a href="#">Profile</a>
+                <a href="#">Reports</a>
+                <a href="<?= BASE_URL ?>/logout.php">Logout</a>
+            </nav>
+        </header>
+    <?php endif; ?>
+
+    <div class="main-content">
