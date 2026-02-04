@@ -34,7 +34,7 @@ require_once __DIR__ . '/../../components/header.php';
 
         <button type="submit">Register</button>
       </form>
-      <p class="login-link">Already have an account? <a href="index.php?page=login">Login here</a></p>
+      <p class="help-text">Already have an account? <a href="index.php?page=login">Login here</a></p>
     </div>
   </div>
 

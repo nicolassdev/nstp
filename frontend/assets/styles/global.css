@@ -152,21 +152,6 @@ button:hover {
   background-color: #256428;
 }
 
-p.login-link {
-  text-align: center;
-  margin-top: 15px;
-  color: #333;
-}
-
-p.login-link a {
-  color: #4CAF50;
-  text-decoration: none;
-}
-
-p.login-link a:hover {
-  text-decoration: underline;
-}
-
 
 p.help-text {
   text-align: center;
