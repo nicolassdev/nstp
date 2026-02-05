@@ -14,13 +14,21 @@ switch ($page) {
     case 'register':
         require 'frontend/pages/Register/register.php';
         break;
-
+    //Dashboard
     case 'dashboard':
         require 'frontend/pages/Dashboard/dashboard.php';
         break;
 
-    case 'home':
-        require 'pages/home.php';
+    case 'profile':
+        require 'frontend/pages/Profile/profile.php';
+        break;
+
+    case 'report':
+        require 'frontend/pages/Report/report.php';
+        break;
+
+    case 'enrollment':
+        require 'frontend/pages/Enrollment/enrollment.php';
         break;
 
     case 'logout':
