@@ -11,7 +11,7 @@ require_once __DIR__ . '/../../components/header.php';
         <h1>NSTP Portal</h1>
         <p class="subtitle">Sign in to continue</p>
 
-        <form action="<?= BASE_URL ?>/backend/Controllers/LoginController.php" method="POST">
+        <form action="<?= BASE_URL ?>backend/Controllers/LoginController.php" method="POST">
             <div class="form-group">
                 <label>Username</label>
                 <input type="text" name="username" required placeholder="Enter your username">

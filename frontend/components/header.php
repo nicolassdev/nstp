@@ -5,11 +5,9 @@ if (!defined('BASE_URL')) {
 }
 
 if (!empty($_SESSION['user_logged_in'])) {
-    $user = $_SESSION['user_data']['user'];
+    $user = $_SESSION['_active_session']['user'];
     // Make sure the array structure exists
     $fullName = $user['user']['full_name'] ?? 'User';
-
-    // echo 'Welcome, ' . $fullName;
 }
 
 ?>

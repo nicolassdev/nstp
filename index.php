@@ -1,6 +1,6 @@
 <?php
 // define URL name folder
-require_once __DIR__ . '/backend/System/Helpers/BaseURL.php';
+require_once __DIR__ . '/frontend/boot/BaseURL.php';
 
 $page = $_GET['page'] ?? 'login'; // default page
 

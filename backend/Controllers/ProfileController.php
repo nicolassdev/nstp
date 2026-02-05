@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $service = new UserService();
 
 // Decode JSON API response
-$result = json_decode($service->httpPut($_POST), true);
+$result = json_decode($service->httpPut($_POST['id'], $_POST), true);
 
 //  Safety check: invalid JSON
 if (!is_array($result)) {
@@ -24,8 +24,11 @@ if (!is_array($result)) {
 
 //  SUCCESS
 if (($result['status'] ?? '') === 'success') {
+
+    // $getData = json_decode($service->httpGet($result['data']['id'], $_GET), true);
+
     $_SESSION['user_logged_in'] = true;
-    $_SESSION['user_data'] = $result['data'] ?? [];
+    $_SESSION['_active_session'] = $result['data'] ?? [];
     $_SESSION['success'] = 'Profile successful updated.';
     header('Location: ' . BASE_URL . 'index.php?page=profile');
     exit;
@@ -34,5 +37,5 @@ if (($result['status'] ?? '') === 'success') {
 //  FAILURE — show API error message
 $_SESSION['user_logged_in'] = false;
 $_SESSION['error'] = $result['message'] ?? 'Profile update failed.';
-header('Location: ' . BASE_URL . 'index.php?page=dashboard');
+header('Location: ' . BASE_URL . 'index.php?page=profile');
 exit;

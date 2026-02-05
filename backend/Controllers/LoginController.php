@@ -25,7 +25,8 @@ if (!is_array($result)) {
 //  SUCCESS
 if (($result['status'] ?? '') === 'success') {
     $_SESSION['user_logged_in'] = true;
-    $_SESSION['user_data'] = $result['data'] ?? [];
+    $_SESSION['_active_session'] = $result['data'] ?? [];
+
     $userInfo = $result['data']['user'] ?? [];
     $_SESSION['success'] = 'Login successful. Please login.';
     header('Location: ' . BASE_URL . 'index.php?page=dashboard');

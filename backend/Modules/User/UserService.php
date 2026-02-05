@@ -225,7 +225,7 @@ class UserService extends Main
         }
     }
 
-    public function httpPut(array $payload)
+    public function httpPut(int $identity, array $payload)
     {
         // Basic validation
         if (empty($identity) || !is_numeric($identity) || !array_key_exists('id', $payload)) {
@@ -235,29 +235,22 @@ class UserService extends Main
         // Custom accepted parameters (not everything can be edited)
         $accepted_parameters = [
             'id',
-            'username',
-            'password',
-            'new_password',
+            'full_name',
             'last_name',
             'first_name',
-            'middle_name',
-            'suffix_name',
-            'age',
-            'sex',
-            'gender',
-            'birthdate',
-            'contact_number',
             'email_address',
+            'sex',
+            'contact_number',
             'address',
-            'role',
-            'level',
-            'allowed_functions',
-            'invitation',
-            'is_profile',
+            'date_created',
+            'date_modified',
+            'created_by',
+            'modified_by',
+            'role'
+
         ];
 
-        // Remove temporarily as its not needed for now
-        unset($payload['invitation']);
+
 
         // Validate each property if correct
         foreach ($payload as $key => $value) {
@@ -272,7 +265,9 @@ class UserService extends Main
         // List of required fields must be filled out
         $required_fields = [
             'id',
-            'level'
+            'contact_number',
+            'address',
+            'email_address',
         ];
 
         // Check if all fields required are filled
@@ -287,93 +282,20 @@ class UserService extends Main
             return $this->Messages->jsonErrorInvalidParameters();
         }
 
-        /**
-         * is_profile - used to identify if the user is currently requesting from profile page
-         * if true then allow the user to update his/her password | else then deny
-         * Denied means the request was coming from the private page (settings/usermanagement)
-         */
-        if (!isset($trimmed_payload['is_profile'])) {
-            // Check if user is super user (in short, root)
-            if ($_SESSION['_active_session']['is_super_user'] !== 1) {
-                // Check if user is one level lower (lower is stronger)
-                if ($_SESSION['_active_session']['level'] >= $trimmed_payload['level']) {
-                    return $this->Messages->jsonFailResponse('User does not have permission.');
-                }
-            }
-        } else {
-            // Unset unnecessary keys
-            unset($trimmed_payload['is_profile']);
-            unset($trimmed_payload['level']);
-        }
 
         try {
-            /**
-             * Check if password is included in payload
-             *
-             * NOTE: You only include password in payload when changing password
-             * (for verification). Also, new_password must be included in payload.
-             */
-            if (array_key_exists('password', $trimmed_payload)) {
-                // Check if new password is included in payload
-                if (!array_key_exists('new_password', $trimmed_payload)) {
-                    return $this->Messages->jsonErrorMissingParameters('new_password');
-                }
 
-                // Set WHERE clause
-                $this->db->where('id', $trimmed_payload['id']);
-
-                // Get account
-                $account = $this->db->getOne($this->table);
-
-                // Check if there is an error
-                if ($this->db->getLastErrno() > 0) {
-                    // Log error
-                    $this->Logger->logError($this->db->getLastError(), $trimmed_payload);
-
-                    return $this->Messages->jsonDatabaseError($this->db->getLastError());
-                }
-
-                // Check if there is an account
-                if (!$account) {
-                    return $this->Messages->jsonFailResponse('Account does not exist.');
-                }
-
-                // Verify password if valid
-                if (!password_verify($trimmed_payload['password'], $account['password'])) {
-                    return $this->Messages->jsonFailResponse('Invalid password.');
-                }
-
-                // Convert new password to hash
-                $trimmed_payload['password'] = password_hash($trimmed_payload['new_password'], PASSWORD_BCRYPT);
-
-                // Unset new password
-                unset($trimmed_payload['new_password']);
-            }
-
-            if (array_key_exists('role', $payload) && array_key_exists('level', $payload)) {
-                if ($payload['role'] == 0 && $payload['level'] === 0) {
-                    $trimmed_payload['is_super_user'] = 1;
-                }
-            }
 
             // Set WHERE clause using ID
             $this->db->where('id', $identity);
 
             // Set modified_by using current active session ID
-            $trimmed_payload['modified_by'] = $_SESSION['_active_session']['id'];
+            $trimmed_payload['modified_by'] = $_SESSION['_active_session']['user']['id'];
 
             // Set date_modified using current date
             $trimmed_payload['date_modified'] = date('Y-m-d H:i:s');
 
-            // Initialize container
-            $allowed_functions = null;
 
-            // Check if there are permissions in payload
-            if (array_key_exists('allowed_functions', $trimmed_payload)) {
-                // Remove allowed functions from payload temporarily
-                $allowed_functions = $trimmed_payload['allowed_functions'];
-                unset($trimmed_payload['allowed_functions']);
-            }
 
             //Add payload for sex and remove gender
             if (array_key_exists('gender', $trimmed_payload)) {
@@ -381,20 +303,26 @@ class UserService extends Main
                 unset($trimmed_payload["gender"]);
             }
 
-            // Check if update is successful
-            if (!$this->db->update($this->table, $trimmed_payload)) {
-                // Log error
-                $this->Logger->logError($this->db->getLastError(), $trimmed_payload);
 
-                return $this->Messages->jsonDatabaseError($this->db->getLastError());
-            }
-            // Log update
-            $this->Logger->logInfo("Account entry updated. ID: {$trimmed_payload['id']}");
+            unset($trimmed_payload["full_name"]);
 
-            return $this->buildApiResponse($trimmed_payload, $this->response_column);
+            $result =  $this->db->update($this->table, $trimmed_payload);
+
+
+            // return $this->buildApiResponse($trimmed_payload, $this->response_column);
+
+            return $this->Messages->jsonSuccessResponse([
+                'user' => [
+                    'id' => $trimmed_payload['id'],
+                    'full_name' => $trimmed_payload['full_name'] ?? null,
+                    'email_address' => $trimmed_payload['email_address'],
+                    'contact_number' => $trimmed_payload['contact_number'],
+                    'address' => $trimmed_payload['address'],
+                ]
+            ]);
         } catch (Exception $e) {
             // Log exception
-            $this->Logger->logCritical($e, $trimmed_payload);
+            // $this->Logger->logCritical($e, $trimmed_payload);
 
             return $this->Messages->jsonInternalError();
         }
@@ -406,7 +334,3 @@ class UserService extends Main
         JsonResponse::success('DELETE payload received', $payload);
     }
 }
-
-// -------------------------
-// ROUTER
-// -------------------------
