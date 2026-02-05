@@ -10,7 +10,7 @@ if (!empty($_SESSION['user_logged_in'])) {
     // Make sure the array structure exists
     $fullName = $user['user']['full_name'] ?? 'User';
 
-    echo 'Welcome, ' . $fullName;
+    // echo 'Welcome, ' . $fullName;
 }
  
 ?>
