@@ -2,6 +2,11 @@
 // $pageCss = 'profile.css';
 $pageTitle = 'Profile';
 require_once __DIR__ . '/../../components/header.php';
+
+
+
+
+
 ?>
 
 <section class="profile-page">
@@ -11,24 +16,25 @@ require_once __DIR__ . '/../../components/header.php';
     <div class="profile-container">
         <!-- Left: Profile Picture -->
         <div class="profile-photo">
-            <img src="<?= BASE_URL ?>/frontend/assets/image/default-user.webp" alt="Profile Picture">
+            <img src="<?= BASE_URL ?>/frontend/assets/image/csi.webp" alt="Profile Picture">
             <button class="btn-upload">Change Photo</button>
         </div>
 
         <!-- Right: Profile Details -->
         <div class="profile-details">
-            <form action="" method="POST">
+            <form action="<?= BASE_URL ?>/backend/Controllers/ProfileController.php" method="POST">
+                <input type="hidden" name="id" value="<?= $user["id"] ?>">
                 <label>Full Name</label>
-                <input type="text" value="<?= $_SESSION['user_data']['user']['full_name'] ?? '' ?>">
+                <input type="text" name="full_name" value="<?= $user["full_name"] ?>">
 
                 <label>Email</label>
-                <input type="email" value="<?= $_SESSION['user_data']['user']['email'] ?? '' ?>">
+                <input type="email" name="email_address" value="<?= $user["email_address"] ?>">
 
                 <label>Contact Number</label>
-                <input type="text" value="<?= $_SESSION['user_data']['user']['contact_number'] ?? '' ?>">
+                <input type="text" name="contact_number" value="<?= $user["contact_number"] ?>">
 
                 <label>Address</label>
-                <textarea><?= $_SESSION['user_data']['user']['address'] ?? '' ?></textarea>
+                <textarea name="address"><?= $user["address"] ?></textarea>
 
                 <button type="submit" class="btn-save">Save Changes</button>
             </form>

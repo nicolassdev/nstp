@@ -12,13 +12,13 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $service = new UserService();
 
 // Decode JSON API response
-$result = json_decode($service->httpPost($_POST), true);
+$result = json_decode($service->httpPut($_POST), true);
 
 //  Safety check: invalid JSON
 if (!is_array($result)) {
     $_SESSION['user_logged_in'] = false;
     $_SESSION['error'] = 'Unexpected server response.';
-    header('Location: ' . BASE_URL . 'index.php?page=login');
+    header('Location: ' . BASE_URL . 'index.php?page=dashboard');
     exit;
 }
 
@@ -26,14 +26,13 @@ if (!is_array($result)) {
 if (($result['status'] ?? '') === 'success') {
     $_SESSION['user_logged_in'] = true;
     $_SESSION['user_data'] = $result['data'] ?? [];
-    $userInfo = $result['data']['user'] ?? [];
-    $_SESSION['success'] = 'Login successful. Please login.';
-    header('Location: ' . BASE_URL . 'index.php?page=dashboard');
+    $_SESSION['success'] = 'Profile successful updated.';
+    header('Location: ' . BASE_URL . 'index.php?page=profile');
     exit;
 }
 
 //  FAILURE — show API error message
 $_SESSION['user_logged_in'] = false;
-$_SESSION['error'] = $result['message'] ?? 'Login failed.';
-header('Location: ' . BASE_URL . 'index.php?page=login');
+$_SESSION['error'] = $result['message'] ?? 'Profile update failed.';
+header('Location: ' . BASE_URL . 'index.php?page=dashboard');
 exit;

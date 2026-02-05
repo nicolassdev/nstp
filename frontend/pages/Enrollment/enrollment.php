@@ -10,7 +10,7 @@ require_once __DIR__ . '/../../components/header.php';
 
     <div class="enrollment-actions">
         <input type="text" placeholder="Search student..." class="search-input">
-        <button class="btn-add">Add Student</button>
+        <button class="btn-add">Enroll Student</button>
     </div>
 
     <div class="enrollment-table-section">

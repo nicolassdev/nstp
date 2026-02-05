@@ -5,14 +5,13 @@ if (!defined('BASE_URL')) {
 }
 
 if (!empty($_SESSION['user_logged_in'])) {
-    $user = $_SESSION['user_data'];
-
+    $user = $_SESSION['user_data']['user'];
     // Make sure the array structure exists
     $fullName = $user['user']['full_name'] ?? 'User';
 
     // echo 'Welcome, ' . $fullName;
 }
- 
+
 ?>
 
 
@@ -39,7 +38,25 @@ if (!empty($_SESSION['user_logged_in'])) {
                 <a href="<?= BASE_URL ?>index.php?page=dashboard">Dashboard</a>
                 <a href="<?= BASE_URL ?>index.php?page=profile">Profile</a>
                 <a href="<?= BASE_URL ?>index.php?page=report">Reports</a>
-                <a href="<?= BASE_URL ?>index.php?page=enrollment">NSTP Enrollment</a>
+                <!-- NSTP Enrollment Dropdown -->
+                <div class="nav-dropdown">
+                    <a href="<?= BASE_URL ?>index.php?page=enrollment" class="dropdown-toggle">
+                        NSTP Enrollment ▾
+                    </a>
+
+                    <div class="dropdown-menu">
+                        <a href="<?= BASE_URL ?>index.php?page=enrollment&status=enroll">
+                            Enroll Student
+                        </a>
+                        <a href="<?= BASE_URL ?>index.php?page=enrollment&status=pending">
+                            Pending
+                        </a>
+                        <a href="<?= BASE_URL ?>index.php?page=enrollment&status=enrolled">
+                            Enrolled
+                        </a>
+                    </div>
+                </div>
+
                 <a href="<?= BASE_URL ?>index.php?page=logout">Logout</a>
             </nav>
         </header>
