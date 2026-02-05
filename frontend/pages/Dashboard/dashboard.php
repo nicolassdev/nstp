@@ -1,7 +1,8 @@
 <?php
-require_once __DIR__ . '/../../../backend/System/Helpers/BaseURL.php';
-// $pageCss = 'dashboard.css';
+$cssFile = $pageCss ?? 'global.css';
+$pageTitle = 'NSTP Dashboard';
 require_once __DIR__ . '/../../components/header.php';
+
 ?>
 
 <section class="dashboard">

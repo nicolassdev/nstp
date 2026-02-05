@@ -39,8 +39,8 @@ if (!empty($_SESSION['user_logged_in'])) {
             <div class="logo">NSTP Portal</div>
             <nav class="nav-links">
                 <a href="<?= BASE_URL ?>/frontend/Dashboard/dashboard.php">Dashboard</a>
-                <a href="#">Profile</a>
-                <a href="#">Reports</a>
+                <a href="<?= BASE_URL ?>/frontend/Dashboard/dashboard.php">Profile</a>
+                <a href="<?= BASE_URL ?>/frontend/Dashboard/dashboard.php">Reports</a>
                 <a href="<?= BASE_URL ?>index.php?page=logout">Logout</a>
             </nav>
         </header>
