@@ -36,10 +36,10 @@ if (!empty($_SESSION['user_logged_in'])) {
         <header class="main-header">
             <div class="logo">NSTP Portal</div>
             <nav class="nav-links">
-                <a href="<?= BASE_URL ?>/frontend/pages/Dashboard/dashboard.php">Dashboard</a>
-                <a href="<?= BASE_URL ?>/frontend/pages/Profle/profile.php">Profile</a>
-                <a href="<?= BASE_URL ?>/frontend/pages/Report/report.php">Reports</a>
-                <a href="<?= BASE_URL ?>/frontend/pages/Enrollment/enrollment.php">NSTP Enrollment</a>
+                <a href="<?= BASE_URL ?>index.php?page=dashboard">Dashboard</a>
+                <a href="<?= BASE_URL ?>index.php?page=profile">Profile</a>
+                <a href="<?= BASE_URL ?>index.php?page=report">Reports</a>
+                <a href="<?= BASE_URL ?>index.php?page=enrollment">NSTP Enrollment</a>
                 <a href="<?= BASE_URL ?>index.php?page=logout">Logout</a>
             </nav>
         </header>
