@@ -1,9 +1,7 @@
 <?php
-session_start();
-define('DIR', '/nstp'); // adjust if needed
-
-$pageCss = 'dashboard.css';
-include DIR . '/frontend/includes/header.php';
+require_once __DIR__ . '/../../../backend/System/Helpers/BaseURL.php';
+// $pageCss = 'dashboard.css';
+require_once __DIR__ . '/../../components/header.php';
 ?>
 
 <section class="dashboard">
@@ -25,6 +23,11 @@ include DIR . '/frontend/includes/header.php';
             <h3>Reports</h3>
             <p>5 Pending</p>
         </div>
+        
+        <div class="card">
+            <h3>Erolled</h3>
+            <p>5 Eronll</p>
+        </div>
     </div>
 
     <div class="dashboard-section">
@@ -37,4 +40,6 @@ include DIR . '/frontend/includes/header.php';
     </div>
 </section>
 
-<?php include DIR . '/frontend/includes/footer.php'; ?>
+<?php
+require_once __DIR__ . '/../../components/footer.php';
+?>

@@ -20,7 +20,7 @@ class Logger
      * Logger constructor.
      * @param string $logs_directory
      */
-    public function __construct($logs_directory = __DIR__ . "/../../Logs/")
+    public function __construct($logs_directory = __DIR__ . "/../Logs/")
     {
         $this->logs_directory = $logs_directory;
     }

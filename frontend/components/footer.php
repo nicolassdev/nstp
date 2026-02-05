@@ -5,5 +5,5 @@
     </footer>
 <?php endif; ?>
 </body>
-
+<!-- <script src="../assets/js/pages/register.js"></script> -->
 </html>

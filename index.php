@@ -1,6 +1,6 @@
 <?php
-// session_start();
-define('BASE_URL', '/nstp');
+// define URL name folder
+require_once __DIR__ . '/backend/System/Helpers/BaseURL.php';
 
 $page = $_GET['page'] ?? 'login'; // default page
 
@@ -16,12 +16,7 @@ switch ($page) {
         break;
 
     case 'dashboard':
-        // protect page
-        if (!isset($_SESSION['user'])) {
-            header('Location: index.php?page=login');
-            exit;
-        }
-        require 'pages/dashboard.php';
+        require 'frontend/pages/Dashboard/dashboard.php';
         break;
 
     case 'home':
@@ -29,11 +24,10 @@ switch ($page) {
         break;
 
     case 'logout':
-        session_destroy();
-        header('Location: index.php?page=login');
+        require 'frontend/components/logout.php';
         exit;
 
     default:
-        require 'pages/404.php';
+        require '404.php';
         break;
 }

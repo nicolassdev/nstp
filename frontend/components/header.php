@@ -1,8 +1,20 @@
 <?php
+
 if (!defined('BASE_URL')) {
     exit('Direct access not allowed');
 }
+
+if (!empty($_SESSION['user_logged_in'])) {
+    $user = $_SESSION['user_data'];
+
+    // Make sure the array structure exists
+    $fullName = $user['user']['full_name'] ?? 'User';
+
+    echo 'Welcome, ' . $fullName;
+}
+ 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +31,8 @@ if (!defined('BASE_URL')) {
 
 <body>
 
+    
+
 
     <?php if (!empty($_SESSION['user_logged_in'])): ?>
         <header class="main-header">
@@ -27,7 +41,7 @@ if (!defined('BASE_URL')) {
                 <a href="<?= BASE_URL ?>/frontend/Dashboard/dashboard.php">Dashboard</a>
                 <a href="#">Profile</a>
                 <a href="#">Reports</a>
-                <a href="<?= BASE_URL ?>/logout.php">Logout</a>
+                <a href="<?= BASE_URL ?>index.php?page=logout">Logout</a>
             </nav>
         </header>
     <?php endif; ?>

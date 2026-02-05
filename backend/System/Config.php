@@ -1,7 +1,6 @@
 <?php
 
 namespace System;
-
 /**
  * Class Config
  * @package Core\System
@@ -37,7 +36,7 @@ class Config
             // The password used to connect to the database.
             'password' => '',
             // The name of the database you want to connect to.
-            'db' => 'nstp_management_db',
+            'db' => 'nstp_db',
             // An optional table prefix which will added to the table name when running Query Builder queries.
             'prefix' => 'tbl_',
             // The character set used in communicating with the database.
