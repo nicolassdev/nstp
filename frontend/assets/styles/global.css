@@ -760,11 +760,11 @@ select:focus {
   min-height: calc(100vh - 60px);
 }
 
-/* .main-content {
+.main-content {
   flex: 1;
-  padding: 3rem;
-  background: #f4f6f8;
-} */
+  /* padding: 2rem; */
+  /* background: #f4f6f8; */
+}
 
 /* ===== TOP BAR ===== */
 .topbar {
@@ -930,4 +930,27 @@ select:focus {
 
 .sidebar-dropdown:hover .dropdown-icon {
   transform: rotate(180deg);
+}
+
+/* ===== ACTIVE SIDEBAR ITEM ===== */
+.sidebar-nav a.active,
+.sidebar-dropdown.active > .sidebar-link {
+  background: rgba(255, 255, 255, 0.22);
+  border-left: 4px solid #a5d6a7;
+  color: #ffffff;
+}
+
+/* Active child */
+.dropdown-content a.active {
+  background: rgba(255, 255, 255, 0.25);
+  font-weight: 600;
+}
+
+/* Smooth feel */
+.sidebar-nav a,
+.sidebar-link,
+.dropdown-content a {
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }

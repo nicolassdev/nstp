@@ -37,6 +37,22 @@ switch ($page) {
         require 'frontend/pages/Enrollment/enrollment.php';
         break;
 
+    case 'enroll-student':
+        require 'frontend/pages/Enrollment/pages/enroll-student.php';
+        break;
+
+    case 'enrollment-pending':
+        require 'frontend/pages/Enrollment/pages/enrollment-pending.php';
+        break;
+
+    case 'enrollment-enrolled':
+        require 'frontend/pages/Enrollment/pages/enrollment-enrolled.php';
+        break;
+
+    case 'enrollment':
+        require 'frontend/pages/Enrollment/enrollment.php';
+        break;
+
     case 'logout':
         require 'frontend/components/logout.php';
         exit;

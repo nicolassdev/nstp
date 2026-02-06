@@ -1,0 +1,240 @@
+/* ===== ENROLL STUDENT PAGE ===== */
+.enroll-page {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.enroll-card {
+  background: #fff;
+  width: 100%;
+  max-width: 900px;
+  border-radius: 14px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+/* Header */
+.enroll-header {
+  background: linear-gradient(135deg, #2e7d32, #4caf50);
+  color: #fff;
+  padding: 1.5rem 2rem;
+}
+
+.enroll-header h2 {
+  margin: 0;
+}
+
+.enroll-header p {
+  margin-top: 0.3rem;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Form */
+.enroll-form {
+  padding: 2rem;
+}
+
+/* Sections */
+.form-section {
+  margin-bottom: 2rem;
+}
+
+.form-section h3 {
+  margin-bottom: 1rem;
+  color: #2e7d32;
+  font-size: 1.1rem;
+  border-left: 4px solid #4caf50;
+  padding-left: 0.6rem;
+}
+
+/* Grid */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+}
+
+/* Inputs */
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.15);
+}
+
+/* Actions */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.btn-primary {
+  background: #2e7d32;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn-primary:hover {
+  background: #256428;
+}
+
+.btn-secondary {
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.btn-secondary:hover {
+  background: #c8e6c9;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* Layout */
+.content-wrapper {
+  padding: 24px;
+  min-height: 100vh;
+}
+
+.page-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 22px;
+}
+
+.page-header p {
+  margin-top: 4px;
+  color: #5f6f5f;
+  font-size: 14px;
+}
+
+/* Card */
+.card {
+  margin-top: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Table */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table thead {
+  background: #2e7d32;
+}
+
+.data-table th {
+  padding: 12px;
+  color: #fff;
+  font-weight: 500;
+  text-align: left;
+  font-size: 14px;
+}
+
+.data-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 14px;
+}
+
+.data-table tbody tr:hover {
+  background: #f1f8f3;
+}
+
+/* Badges */
+.badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.badge-pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+/* Buttons */
+.text-center {
+  text-align: center;
+}
+
+.btn {
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  margin: 0 4px;
+}
+
+.btn-approve {
+  background: #2e7d32;
+  color: #fff;
+}
+
+.btn-approve:hover {
+  background: #1b5e20;
+}
+
+.btn-reject {
+  background: #c62828;
+  color: #fff;
+}
+
+.btn-reject:hover {
+  background: #8e0000;
+}
+
+/* Enrolled Badge */
+.badge-enrolled {
+  background: #e8f5e9;
+  color: #1b5e20;
+}
+
+/* View Button */
+.btn-view {
+  background: #1976d2;
+  color: #fff;
+}
+
+.btn-view:hover {
+  background: #0d47a1;
+}

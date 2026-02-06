@@ -2,6 +2,7 @@
 // $pageCss = 'profile.css';
 $pageTitle = 'Profile';
 require_once __DIR__ . '/../../components/header.php';
+
 ?>
 <div class="profile-page">
     <h1>Your Profile</h1>
