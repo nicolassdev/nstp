@@ -1,3 +1,4 @@
+<?php ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +11,7 @@
         body {
             margin: 0;
             height: 100vh;
-            background: linear-gradient(135deg, #2e7d32, #66bb6a);
+            background: linear-gradient(135deg, #aed1af, #66bb6a);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -63,7 +64,7 @@
         }
 
         .btn-secondary {
-            border: 1px solid #2e7d32;
+            border: 1px solid #aed1af;
             color: #2e7d32;
         }
 
@@ -89,8 +90,8 @@
         </p>
 
         <div class="btn-group">
-            <a href="index.php?page=login" class="btn-primary">Go to Login</a>
-            <a href="index.php?page=home" class="btn-secondary">Back to Home</a>
+            <a href="/nstp/index.php?page=login" class="btn-primary">Go to Login</a>
+            <!-- <a href="index.php?page=home" class="btn-secondary">Back to Home</a> -->
         </div>
 
         <div class="footer-text">
@@ -101,3 +102,4 @@
 </body>
 
 </html>
+<?php exit; ?>

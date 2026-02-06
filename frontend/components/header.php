@@ -1,7 +1,7 @@
 <?php
 
 if (!defined('BASE_URL')) {
-    exit('Direct access not allowed');
+    require_once __DIR__ . '/../../404.php';    
 }
 
 if (!empty($_SESSION['user_logged_in'])) {
