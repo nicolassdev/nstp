@@ -30,7 +30,12 @@ require_once __DIR__ . '/../../../components/header.php';
 
                     <div class="form-group">
                         <label>Course</label>
-                        <input type="text" name="course" placeholder="BSIT" required>
+                        <select name="course" required>
+                            <option value="">Select course</option>
+                            <option value="0">BSIS</option>
+                            <option value="1">BSCS</option>
+                            <option value="2">ACT</option>
+                        </select>
                     </div>
 
                     <div class="form-group">
