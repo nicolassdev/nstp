@@ -2,14 +2,8 @@
 // $pageCss = 'profile.css';
 $pageTitle = 'Profile';
 require_once __DIR__ . '/../../components/header.php';
-
-
-
-
-
 ?>
-
-<section class="profile-page">
+<div class="profile-page">
     <h1>Your Profile</h1>
     <p class="subtitle">Update your personal information</p>
 
@@ -22,7 +16,7 @@ require_once __DIR__ . '/../../components/header.php';
 
         <!-- Right: Profile Details -->
         <div class="profile-details">
-            <form action="<?= BASE_URL ?>/backend/Controllers/ProfileController.php" method="POST">
+            <form id="updateProfileForm">
                 <input type="hidden" name="id" value="<?= $user["id"] ?>">
                 <label>Full Name</label>
                 <input type="text" name="full_name" value="<?= $user["full_name"] ?>">
@@ -40,6 +34,6 @@ require_once __DIR__ . '/../../components/header.php';
             </form>
         </div>
     </div>
-</section>
-
+</div>
+<script src="/nstp/frontend/pages/Profile/scripts/profile.js"></script>
 <?php require_once __DIR__ . '/../../components/footer.php'; ?>

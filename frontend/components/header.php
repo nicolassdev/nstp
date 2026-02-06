@@ -7,7 +7,7 @@ if (!defined('BASE_URL')) {
 if (!empty($_SESSION['user_logged_in'])) {
     $user = $_SESSION['_active_session']['user'];
     // Make sure the array structure exists
-    $fullName = $user['user']['full_name'] ?? 'User';
+    $fullName = $_SESSION['_active_session']['user']['full_name'];
 }
 
 ?>
@@ -22,10 +22,8 @@ if (!empty($_SESSION['user_logged_in'])) {
 
     <link rel="stylesheet" href="<?= BASE_URL ?>/frontend/assets/styles/global.css?v=<?= time() ?>">
     <link rel="icon" type="image/webp" href="<?= BASE_URL ?>/frontend/assets/image/csi.webp">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
 <body>
 
 

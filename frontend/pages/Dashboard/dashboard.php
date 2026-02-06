@@ -6,7 +6,7 @@ require_once __DIR__ . '/../../components/header.php';
 ?>
 
 <section class="dashboard">
-    <h1>Welcome back 👋</h1>
+    <h1>Welcome back <?php echo $fullName ?>👋</h1>
     <p class="subtitle">Here’s an overview of your NSTP activities</p>
 
     <div class="dashboard-cards">

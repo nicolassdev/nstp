@@ -4,6 +4,12 @@ require_once __DIR__ . '/frontend/boot/BaseURL.php';
 
 $page = $_GET['page'] ?? 'login'; // default page
 
+// Pages that require login
+$protectedPages = ['dashboard', 'profile', 'report', 'enrollment'];
+
+if (in_array($page, $protectedPages)) {
+    requireLogin(); // check session
+}
 switch ($page) {
 
     case 'login':

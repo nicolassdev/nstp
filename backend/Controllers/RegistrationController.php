@@ -1,36 +1,51 @@
 <?php
-session_start();
-
 require_once __DIR__ . '/../System/Helpers/BaseURL.php';
 require_once __DIR__ . '/../Modules/Registration/RegistrationService.php';
 
 use Modules\Registration\RegistrationService;
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: ' . BASE_URL . 'index.php?page=register');
+    http_response_code(405);
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'Method Not Allowed'
+    ]);
     exit;
+}
+
+// Use POST or JSON input
+$input = $_POST;
+if (empty($input)) {
+    $input = json_decode(file_get_contents('php://input'), true) ?? [];
 }
 
 $service = new RegistrationService();
+$result = json_decode($service->httpPost($input), true);
 
-// Decode JSON API response
-$result = json_decode($service->httpPost($_POST), true);
-
-//  Safety check: invalid JSON
 if (!is_array($result)) {
-    $_SESSION['error'] = 'Unexpected server response.';
-    header('Location: ' . BASE_URL . 'index.php?page=register');
+    http_response_code(500);
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'Unexpected server response.'
+    ]);
     exit;
 }
 
-//  SUCCESS
+// SUCCESS
 if (($result['status'] ?? '') === 'success') {
-    $_SESSION['success'] = 'Registration successful. Please login.';
-    header('Location: ' . BASE_URL . 'index.php?page=login');
+    http_response_code(200);
+    echo json_encode([
+        'status' => 'success',
+        'message' => 'Registration successful.',
+        'data' => $result['data'] ?? null
+    ]);
     exit;
 }
 
-//  FAILURE — show API error message
-$_SESSION['error'] = $result['message'] ?? 'Registration failed.';
-header('Location: ' . BASE_URL . 'index.php?page=register');
+// FAILURE
+http_response_code(400);
+echo json_encode([
+    'status' => 'fail',
+    'message' => $result['message'] ?? 'Registration failed.'
+]);
 exit;

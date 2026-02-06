@@ -7,16 +7,18 @@ require_once __DIR__ . '/../../components/header.php';
 ?>
 
 <?php if (!empty($_SESSION['error'])): ?>
-    <div class="alert alert-danger">
-        <?= htmlspecialchars($_SESSION['error']) ?>
-    </div>
-    <?php unset($_SESSION['error']); ?>
+<div class="alert alert-danger">
+    <?= htmlspecialchars($_SESSION['error']) ?>
+</div>
+<?php unset($_SESSION['error']); ?>
 <?php endif; ?>
+
+
 
 <div class="register-container">
   <div class="form-container">
     <h1>Student Registration</h1>
-    <form action="<?= BASE_URL ?>/backend/Controllers/RegistrationController.php" method="POST">
+    <form id="registerForm">
       <label for="last_name">Last name</label>
       <input type="text" id="last_name" name="last_name" placeholder="Enter your lastname" required>
 
@@ -52,7 +54,7 @@ require_once __DIR__ . '/../../components/header.php';
   </div>
 </div>
 
-
+<script src="/nstp/frontend/pages/Register/scripts/register.js"></script>
 <?php
 require_once __DIR__ . '/../../components/footer.php';
 ?>

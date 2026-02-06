@@ -155,7 +155,6 @@ class UserService extends Main
             ];
             // Log info
             // $this->Logger->logInfo("{$_SESSION['_active_session']['username']} logged in.");
-
             return $this->Messages->jsonSuccessLogin([
                 'user' => [
                     'id' => $account['id'],

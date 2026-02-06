@@ -4,38 +4,52 @@ require_once __DIR__ . '/../Modules/User/UserService.php';
 
 use Modules\User\UserService;
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: ' . BASE_URL . 'index.php?page=login');
+// Accept POST or PUT for API
+if (!in_array($_SERVER['REQUEST_METHOD'], ['POST', 'PUT'])) {
+    http_response_code(405);
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'Method Not Allowed'
+    ]);
     exit;
+}
+
+// Handle input (FormData via fetch)
+$input = $_POST;
+if (empty($input)) {
+    $input = json_decode(file_get_contents('php://input'), true) ?? [];
 }
 
 $service = new UserService();
+$result = json_decode($service->httpPut($input['id'] ?? 0, $input), true);
 
-// Decode JSON API response
-$result = json_decode($service->httpPut($_POST['id'], $_POST), true);
-
-//  Safety check: invalid JSON
 if (!is_array($result)) {
-    $_SESSION['user_logged_in'] = false;
-    $_SESSION['error'] = 'Unexpected server response.';
-    header('Location: ' . BASE_URL . 'index.php?page=dashboard');
+    http_response_code(500);
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'Unexpected server response.'
+    ]);
     exit;
 }
 
-//  SUCCESS
+// SUCCESS
 if (($result['status'] ?? '') === 'success') {
-
-    // $getData = json_decode($service->httpGet($result['data']['id'], $_GET), true);
-
-    $_SESSION['user_logged_in'] = true;
+    // Update session data
     $_SESSION['_active_session'] = $result['data'] ?? [];
-    $_SESSION['success'] = 'Profile successful updated.';
-    header('Location: ' . BASE_URL . 'index.php?page=profile');
+
+    http_response_code(200);
+    echo json_encode([
+        'status' => 'success',
+        'message' => 'Profile successfully updated',
+        'data' => $result['data']
+    ]);
     exit;
 }
 
-//  FAILURE — show API error message
-$_SESSION['user_logged_in'] = false;
-$_SESSION['error'] = $result['message'] ?? 'Profile update failed.';
-header('Location: ' . BASE_URL . 'index.php?page=profile');
+// FAILURE
+http_response_code(400);
+echo json_encode([
+    'status' => 'fail',
+    'message' => $result['message'] ?? 'Profile update failed.'
+]);
 exit;
