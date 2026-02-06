@@ -72,12 +72,8 @@ $currentPage = $_GET['page'] ?? 'dashboard';
 
                     <!-- NSTP Enrollment -->
                     <?php
-                    $enrollmentActive = in_array($currentPage, [
-                        'enroll-student',
-                        'enrollment-pending',
-                        'enrollment-enrolled'
-                    ]);
-                    ?>
+                    $enrollmentActive = in_array($currentPage, ['enroll-student', 'enrollment-pending', 'enrollment-enrolled']); ?>
+
                     <div class="sidebar-dropdown ">
                         <a
                             class="sidebar-link dropdown-toggle">
